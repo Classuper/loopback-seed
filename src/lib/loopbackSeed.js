@@ -16,10 +16,12 @@ export default class LoopbackSeed {
     }
 
     let root = app.root || process.cwd();
-    let seedsDir = options.seedDir; // not currently working
-    if (!seedsDir) {
-      seedsDir = path.join(root, '/database');
+    let seedsDir = options.seedsDir || './database';
+
+    if (!path.isAbsolute(seedsDir)) {
+      seedsDir = path.join(root, seedsDir);
     }
+
     if (!fs.existsSync(seedsDir)) {
       throw new Error('Can not find seeds path');
     }

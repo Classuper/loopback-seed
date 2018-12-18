@@ -41,10 +41,12 @@ var LoopbackSeed = function () {
     }
 
     var root = app.root || process.cwd();
-    var seedsDir = options.seedDir; // not currently working
-    if (!seedsDir) {
-      seedsDir = _path2.default.join(root, '/database');
+    var seedsDir = options.seedsDir || './database';
+
+    if (!_path2.default.isAbsolute(seedsDir)) {
+      seedsDir = _path2.default.join(root, seedsDir);
     }
+
     if (!_fs2.default.existsSync(seedsDir)) {
       throw new Error('Can not find seeds path');
     }
