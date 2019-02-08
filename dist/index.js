@@ -9,4 +9,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 module.exports = function (app, options) {
   var seeder = new _loopbackSeed2.default(app, options);
   app.seeder = seeder;
+  app.seeder.getOptions = function () {
+    return options;
+  };
 };
