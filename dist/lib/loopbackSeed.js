@@ -94,7 +94,7 @@ var LoopbackSeed = function () {
       for (var i = 0; i < size; i++) {
         var newModel = {};
         for (var property in factory.options) {
-          if (factory.options[property] == null || typeof factory.options[property] == 'string' && factory.options[property].startsWith('{{')) {
+          if (typeof factory.options[property] == 'string' && factory.options[property].startsWith('{{')) {
             try {
               newModel[property] = _faker2.default.fake(factory.options[property]);
             } catch (err) {

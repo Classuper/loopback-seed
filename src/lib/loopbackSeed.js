@@ -56,7 +56,7 @@ export default class LoopbackSeed {
     for (var i = 0; i < size; i++) {
       let newModel = {};
       for (let property in factory.options) {
-        if (factory.options[property] == null || (typeof factory.options[property] == 'string' && factory.options[property].startsWith('{{'))) {
+        if (typeof factory.options[property] == 'string' && factory.options[property].startsWith('{{')) {
           try {
             newModel[property] = faker.fake(factory.options[property]);
           } catch (err) {
